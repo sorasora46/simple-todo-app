@@ -60,3 +60,19 @@ export const editTodo = async (id_string, todo, isDone) => {
     return err;
   }
 };
+
+export const deleteTodo = async (id_string) => {
+  try {
+    await mongoClient.connect();
+    const result = await mongoClient
+      .db("local")
+      .collection("todo_list")
+      .deleteOne({
+        _id: new ObjectId(id_string),
+      });
+    await mongoClient.close();
+    return result;
+  } catch (err) {
+    return err;
+  }
+};
