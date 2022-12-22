@@ -6,6 +6,10 @@ function App() {
   const [task, setTask] = useState();
   const [taskList, setTaskList] = useState();
 
+  function generateButtonStyle(color) {
+    return `rounded text-white bg-${color}-500 px-6 py-2 shadow-md shadow-${color}-500/50`
+  }
+
   function handleSubmit(event) {
     alert("Task submitted");
     event.preventDefault();
