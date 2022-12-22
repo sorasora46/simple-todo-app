@@ -95,7 +95,7 @@ function App() {
 
   return (
     <div className="h-[100vh] flex justify-center items-center bg-gray-200">
-      <div className="w-[50%] h-[50vh] border rounded-xl py-10 px-10 shadow-lg bg-white">
+      <div className="w-[60%] h-[50vh] border rounded-xl py-10 px-10 shadow-lg bg-white">
         <div className="flex flex-col justify-center items-center">
           <h1 className="font-bold text-2xl text-center">To Do App</h1>
           <div className="w-[100%] flex justify-center gap-8 my-10">
@@ -126,7 +126,7 @@ function App() {
           </div>
           {/* https://stackoverflow.com/questions/4185814/fixed-table-cell-width about table-layout: fixed */}
           <div className="table-wrapper w-[100%] h-52 overflow-y-auto">
-            <table className="w-[85%] text-left table-fixed">
+            <table className="w-[100%] text-left table-fixed">
               <thead>
                 <tr>
                   <th>No.</th>
@@ -138,7 +138,7 @@ function App() {
               <tbody>
                 {taskList?.map((task, index) => {
                   return (
-                    <tr key={index}>
+                    <tr key={index} onClick={() => { onOpen() }} className="hover:bg-green-400/75">
                       <td>{index + 1}</td>
                       {/* https://stackoverflow.com/questions/9789723/css-text-overflow-in-a-table-cell about setting text-overflow in table cell */}
                       <td className="max-w-[150px] overflow-hidden whitespace-nowrap text-ellipsis">
