@@ -6,16 +6,37 @@ function App() {
   const [task, setTask] = useState("");
   const [taskList, setTaskList] = useState();
 
-  function Button({ type, children, bg_color, shadow_color, className }) {
+  function Button({
+    type,
+    children,
+    bg_color,
+    shadow_color,
+    className,
+    onClick,
+  }) {
     return (
       <button
         type={type}
         className={
           generateButtonStyle(bg_color, shadow_color) + " " + className
         }
+        onClick={onClick}
       >
         {children}
       </button>
+    );
+  }
+
+  function DeleteButton({ onClick }) {
+    return (
+      <Button
+        type="button"
+        bg_color="bg-red-600"
+        shadow_color="shadow-red-600/50"
+        onClick={onClick}
+      >
+        DELETE
+      </Button>
     );
   }
 
@@ -26,15 +47,25 @@ function App() {
   function handleSubmit(event) {
     alert("Task submitted");
     axios.post("http://localhost:8000/add", {
-      todo: task
-    })
-    setTask("")
+      todo: task,
+    });
+    setTask("");
+    window.location.reload()
     event.preventDefault();
     event.stopPropagation();
   }
 
   function handleChange(event) {
     setTask(event.target.value);
+  }
+
+  function handleDelete(_id) {
+    axios.delete("http://localhost:8000/delete", {
+      data: {
+        id_string: _id,
+      },
+    });
+    window.location.reload()
   }
 
   function fetchData() {
@@ -51,6 +82,8 @@ function App() {
   useEffect(() => {
     fetchData();
   }, []);
+
+  console.log(taskList);
 
   return (
     <div className="h-[100vh] flex justify-center items-center bg-gray-200">
@@ -105,23 +138,15 @@ function App() {
                     <td>
                       {task.isDone ? (
                         <>
-                          <Button
-                            type="button"
-                            bg_color="bg-red-600"
-                            shadow_color="shadow-red-600/50"
-                          >
-                            DELETE
-                          </Button>
+                          <DeleteButton
+                            onClick={() => handleDelete(task._id)}
+                          />
                         </>
                       ) : (
                         <div className="flex gap-4">
-                          <Button
-                            type="button"
-                            bg_color="bg-red-600"
-                            shadow_color="shadow-red-600/50"
-                          >
-                            DELETE
-                          </Button>
+                          <DeleteButton
+                            onClick={() => handleDelete(task._id)}
+                          />
                           <Button
                             type="button"
                             bg_color="bg-green-600"
