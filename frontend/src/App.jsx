@@ -125,7 +125,7 @@ function App() {
             </Button>
           </div>
           {/* https://stackoverflow.com/questions/4185814/fixed-table-cell-width about table-layout: fixed */}
-          <div className="table-wrapper w-[100%] h-52 overflow-y-scroll">
+          <div className="table-wrapper w-[100%] h-52 overflow-y-auto">
             <table className="w-[85%] text-left table-fixed">
               <thead>
                 <tr>
