@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios"
+import axios from "axios";
 import "./style.css";
 
 function App() {
@@ -58,24 +58,28 @@ function App() {
             </button>
           </div>
           <table className="w-[100%] text-left">
-            <tr>
-              <th>No.</th>
-              <th>Todo Item</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-            <tr>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-            </tr>
-            <tr>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-            </tr>
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>Todo Item</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>test</td>
+                <td>test</td>
+                <td>test</td>
+                <td>test</td>
+              </tr>
+              <tr>
+                <td>test</td>
+                <td>test</td>
+                <td>test</td>
+                <td>test</td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </div>
