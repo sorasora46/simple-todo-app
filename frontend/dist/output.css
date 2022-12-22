@@ -561,6 +561,10 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.fixed{
+  position: fixed;
+}
+
 .my-10{
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
@@ -596,6 +600,22 @@ video {
 
 .max-w-\[150px\]{
   max-width: 150px;
+}
+
+.max-w-\[10\%\]{
+  max-width: 10%;
+}
+
+.max-w-\[50\%\]{
+  max-width: 50%;
+}
+
+.max-w-\[20\%\]{
+  max-width: 20%;
+}
+
+.table-fixed{
+  table-layout: fixed;
 }
 
 .flex-col{

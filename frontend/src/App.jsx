@@ -124,7 +124,7 @@ function App() {
               GET TASKS
             </Button>
           </div>
-          <table className="w-[100%] text-left">
+          <table className="w-[100%] text-left table-fixed">
             <thead>
               <tr>
                 <th>No.</th>
