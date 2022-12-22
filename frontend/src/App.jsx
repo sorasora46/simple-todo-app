@@ -3,7 +3,7 @@ import axios from "axios";
 import "./style.css";
 
 function App() {
-  const [task, setTask] = useState();
+  const [task, setTask] = useState("");
   const [taskList, setTaskList] = useState();
 
   function Button({ type, children, bg_color, shadow_color, className }) {
@@ -25,6 +25,10 @@ function App() {
 
   function handleSubmit(event) {
     alert("Task submitted");
+    axios.post("http://localhost:8000/add", {
+      todo: task
+    })
+    setTask("")
     event.preventDefault();
     event.stopPropagation();
   }
