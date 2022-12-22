@@ -1,10 +1,14 @@
 import express from "express";
+import cors from "cors"
 import { addTodo, getTodos } from "./mongoFunction.js";
 
 const app = express();
 const PORT = 8000;
 
 app.use(express.json());
+app.use(cors({
+  origin: "http://localhost:3000"
+}))
 
 app.get("/get", (_, res) => {
   getTodos()
