@@ -40,7 +40,7 @@ function App() {
               GET TASKS
             </button>
           </div>
-          <table className="w-[100%]">
+          <table className="w-[100%] text-left">
             <tr>
               <th>No.</th>
               <th>Todo Item</th>
