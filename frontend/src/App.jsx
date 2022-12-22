@@ -67,6 +67,27 @@ function App() {
               </tr>
             </thead>
             <tbody>
+              {taskList?.map((task, index) => {
+                return (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{task.todo}</td>
+                    <td>{task.isDone ? "Done" : "In Progress"}</td>
+                    <td>
+                      {task.isDone ? (
+                        <>
+                          <button>DELETE</button>
+                        </>
+                      ) : (
+                        <>
+                          <button>DELETE</button>
+                          <button>FINISHED</button>
+                        </>
+                      )}
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
