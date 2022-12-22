@@ -642,6 +642,10 @@ video {
   overflow: hidden;
 }
 
+.overflow-scroll{
+  overflow: scroll;
+}
+
 .text-ellipsis{
   text-overflow: ellipsis;
 }

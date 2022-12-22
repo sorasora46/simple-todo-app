@@ -95,7 +95,7 @@ function App() {
 
   return (
     <div className="h-[100vh] flex justify-center items-center bg-gray-200">
-      <div className="w-[50%] h-[50vh] border rounded-xl py-10 px-10 shadow-lg transition ease-in-out delay-150 hover:scale-105 hover:shadow-2xl bg-white">
+      <div className="w-[50%] h-[50vh] border rounded-xl py-10 px-10 shadow-lg bg-white">
         <div className="flex flex-col justify-center items-center">
           <h1 className="font-bold text-2xl text-center">To Do App</h1>
           <div className="w-[100%] flex justify-center gap-8 my-10">
