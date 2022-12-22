@@ -124,6 +124,7 @@ function App() {
               GET TASKS
             </Button>
           </div>
+          {/* https://stackoverflow.com/questions/4185814/fixed-table-cell-width about table-layout: fixed */}
           <table className="w-[100%] text-left table-fixed">
             <thead>
               <tr>
