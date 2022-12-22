@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios"
 import "./style.css";
 
 function App() {
   const [task, setTask] = useState();
+  const [taskList, setTaskList] = useState();
 
   function handleSubmit(event) {
     alert("Task submitted");
@@ -13,6 +15,21 @@ function App() {
   function handleChange(event) {
     setTask(event.target.value);
   }
+
+  function fetchData() {
+    axios
+      .get("http://localhost:8000/get")
+      .then((res) => {
+        setTaskList(res.data.todo_list);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <div className="h-[100vh] flex justify-center items-center bg-gray-200">
