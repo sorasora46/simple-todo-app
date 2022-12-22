@@ -590,12 +590,48 @@ video {
   height: 50vh;
 }
 
+.h-1{
+  height: 0.25rem;
+}
+
+.h-20{
+  height: 5rem;
+}
+
+.h-40{
+  height: 10rem;
+}
+
+.h-60{
+  height: 15rem;
+}
+
+.h-52{
+  height: 13rem;
+}
+
 .w-\[50\%\]{
   width: 50%;
 }
 
 .w-\[100\%\]{
   width: 100%;
+}
+
+.w-\[75\%\]{
+  width: 75%;
+}
+
+.w-\[85\%\]{
+  width: 85%;
+}
+
+.w-\[90\%\]{
+  width: 90%;
+}
+
+.w-\[95\%\]{
+  width: 95%;
 }
 
 .max-w-\[150px\]{
@@ -644,6 +680,10 @@ video {
 
 .overflow-scroll{
   overflow: scroll;
+}
+
+.overflow-y-scroll{
+  overflow-y: scroll;
 }
 
 .text-ellipsis{

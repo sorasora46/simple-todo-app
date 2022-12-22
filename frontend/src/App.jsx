@@ -125,53 +125,57 @@ function App() {
             </Button>
           </div>
           {/* https://stackoverflow.com/questions/4185814/fixed-table-cell-width about table-layout: fixed */}
-          <table className="w-[100%] text-left table-fixed">
-            <thead>
-              <tr>
-                <th>No.</th>
-                <th>Todo Item</th>
-                <th>Status</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {taskList?.map((task, index) => {
-                return (
-                  <tr key={index}>
-                    <td>{index + 1}</td>
-                    {/* https://stackoverflow.com/questions/9789723/css-text-overflow-in-a-table-cell about setting text-overflow in table cell */}
-                    <td className="max-w-[150px] overflow-hidden whitespace-nowrap text-ellipsis">
-                      {task.todo}
-                    </td>
-                    <td>{task.isDone ? "Done" : "In Progress"}</td>
-                    <td>
-                      {task.isDone ? (
-                        <>
-                          <DeleteButton
-                            onClick={() => handleDelete(task._id)}
-                          />
-                        </>
-                      ) : (
-                        <div className="flex gap-4">
-                          <DeleteButton
-                            onClick={() => handleDelete(task._id)}
-                          />
-                          <Button
-                            type="button"
-                            bg_color="bg-green-600"
-                            shadow_color="shadow-green-600/50"
-                            onClick={() => handleFinished(task._id, task.todo)}
-                          >
-                            FINISHED
-                          </Button>
-                        </div>
-                      )}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+          <div className="table-wrapper w-[100%] h-52 overflow-y-scroll">
+            <table className="w-[85%] text-left table-fixed">
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Todo Item</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {taskList?.map((task, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>{index + 1}</td>
+                      {/* https://stackoverflow.com/questions/9789723/css-text-overflow-in-a-table-cell about setting text-overflow in table cell */}
+                      <td className="max-w-[150px] overflow-hidden whitespace-nowrap text-ellipsis">
+                        {task.todo}
+                      </td>
+                      <td>{task.isDone ? "Done" : "In Progress"}</td>
+                      <td>
+                        {task.isDone ? (
+                          <>
+                            <DeleteButton
+                              onClick={() => handleDelete(task._id)}
+                            />
+                          </>
+                        ) : (
+                          <div className="flex gap-4">
+                            <DeleteButton
+                              onClick={() => handleDelete(task._id)}
+                            />
+                            <Button
+                              type="button"
+                              bg_color="bg-green-600"
+                              shadow_color="shadow-green-600/50"
+                              onClick={() =>
+                                handleFinished(task._id, task.todo)
+                              }
+                            >
+                              FINISHED
+                            </Button>
+                          </div>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
