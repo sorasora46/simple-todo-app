@@ -1,14 +1,16 @@
 import express from "express";
-import cors from "cors"
-import { addTodo, getTodos } from "./mongoFunction.js";
+import cors from "cors";
+import { addTodo, getTodos, editTodo } from "./mongoFunction.js";
 
 const app = express();
 const PORT = 8000;
 
 app.use(express.json());
-app.use(cors({
-  origin: "http://localhost:3000"
-}))
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+  })
+);
 
 app.get("/get", (_, res) => {
   getTodos()
@@ -25,7 +27,20 @@ app.post("/add", (req, res) => {
   addTodo(req.body.todo)
     .then((result) => {
       console.log("Added");
-      res.status(200).json({ added: result.acknowledged });
+      res.status(200).json({ added: result});
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json({ err: err });
+    });
+});
+
+app.put("/edit", (req, res) => {
+  const { id_string, todo, isDone } = req.body;
+  editTodo(id_string, todo, isDone)
+    .then((result) => {
+      console.log("Updated");
+      res.status(200).json({ updated: result.acknowledged });
     })
     .catch((err) => {
       console.log(err);
