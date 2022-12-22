@@ -45,7 +45,6 @@ function App() {
   }
 
   function handleSubmit(event) {
-    alert("Task submitted");
     axios.post("http://localhost:8000/add", {
       todo: task,
     });
