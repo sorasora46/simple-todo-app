@@ -6,8 +6,21 @@ function App() {
   const [task, setTask] = useState();
   const [taskList, setTaskList] = useState();
 
-  function generateButtonStyle(color) {
-    return `rounded text-white bg-${color}-500 px-6 py-2 shadow-md shadow-${color}-500/50`
+  function Button({ type, children, bg_color, shadow_color, className }) {
+    return (
+      <button
+        type={type}
+        className={
+          generateButtonStyle(bg_color, shadow_color) + " " + className
+        }
+      >
+        {children}
+      </button>
+    );
+  }
+
+  function generateButtonStyle(bg_color, shadow_color) {
+    return `rounded text-white px-6 py-2 shadow-md ${bg_color} ${shadow_color}`;
   }
 
   function handleSubmit(event) {
@@ -50,16 +63,21 @@ function App() {
                 placeholder="Enter a task here"
                 className="mr-8 border rounded focus:outline-none focus:ring focus:border-blue-500 focus:rounded px-6 py-2"
               />
-              <button
+              <Button
                 type="submit"
-                className="rounded text-white bg-blue-600 px-6 py-2 shadow-md shadow-blue-600/50"
+                bg_color="bg-blue-600"
+                shadow_color="shadow-blue-600/50"
               >
                 SAVE
-              </button>
+              </Button>
             </form>
-            <button className="rounded text-white bg-yellow-500 px-6 py-2 shadow-md shadow-yellow-500/50">
+            <Button
+              type="button"
+              bg_color="bg-yellow-500"
+              shadow_color="shadow-yellow-500/50"
+            >
               GET TASKS
-            </button>
+            </Button>
           </div>
           <table className="w-[100%] text-left">
             <thead>
@@ -75,18 +93,39 @@ function App() {
                 return (
                   <tr key={index}>
                     <td>{index + 1}</td>
-                    <td>{task.todo}</td>
+                    {/* https://stackoverflow.com/questions/9789723/css-text-overflow-in-a-table-cell about setting text-overflow in table cell */}
+                    <td className="max-w-[150px] overflow-hidden whitespace-nowrap text-ellipsis">
+                      {task.todo}
+                    </td>
                     <td>{task.isDone ? "Done" : "In Progress"}</td>
                     <td>
                       {task.isDone ? (
                         <>
-                          <button>DELETE</button>
+                          <Button
+                            type="button"
+                            bg_color="bg-red-600"
+                            shadow_color="shadow-red-600/50"
+                          >
+                            DELETE
+                          </Button>
                         </>
                       ) : (
-                        <>
-                          <button>DELETE</button>
-                          <button>FINISHED</button>
-                        </>
+                        <div className="flex gap-4">
+                          <Button
+                            type="button"
+                            bg_color="bg-red-600"
+                            shadow_color="shadow-red-600/50"
+                          >
+                            DELETE
+                          </Button>
+                          <Button
+                            type="button"
+                            bg_color="bg-green-600"
+                            shadow_color="shadow-green-600/50"
+                          >
+                            FINISHED
+                          </Button>
+                        </div>
                       )}
                     </td>
                   </tr>
