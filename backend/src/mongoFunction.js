@@ -7,7 +7,7 @@ const mongoClient = new MongoClient("mongodb://localhost:27017/");
 export const getTodos = async () => {
   try {
     await mongoClient.connect();
-    const result = await mongoClient.db("local").collection("todo_list").find();
+    const result = await mongoClient.db("local").collection("todo_list").find({}).toArray();
     await mongoClient.close();
     return result;
   } catch (err) {
