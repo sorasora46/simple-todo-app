@@ -50,7 +50,7 @@ function App() {
       todo: task,
     });
     setTask("");
-    window.location.reload()
+    window.location.reload();
     event.preventDefault();
     event.stopPropagation();
   }
@@ -65,7 +65,16 @@ function App() {
         id_string: _id,
       },
     });
-    window.location.reload()
+    window.location.reload();
+  }
+
+  function handleFinished(_id, todo) {
+    axios.put("http://localhost:8000/edit", {
+      id_string: _id,
+      todo: todo,
+      isDone: true,
+    });
+    window.location.reload();
   }
 
   function fetchData() {
@@ -151,6 +160,7 @@ function App() {
                             type="button"
                             bg_color="bg-green-600"
                             shadow_color="shadow-green-600/50"
+                            onClick={() => handleFinished(task._id, task.todo)}
                           >
                             FINISHED
                           </Button>
