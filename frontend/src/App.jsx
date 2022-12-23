@@ -137,29 +137,38 @@ function App() {
                       </td>
                       <td>{task.isDone ? "Done" : "In Progress"}</td>
                       <td>
-                        {task.isDone ? (
-                          <>
-                            <DeleteButton
-                              onClick={() => handleDelete(task._id)}
-                            />
-                          </>
-                        ) : (
-                          <div className="flex gap-4">
-                            <DeleteButton
-                              onClick={() => handleDelete(task._id)}
-                            />
-                            <Button
-                              type="button"
-                              bg_color="bg-green-600"
-                              shadow_color="shadow-green-600/50"
-                              onClick={() =>
-                                handleFinished(task._id, task.todo)
-                              }
-                            >
-                              FINISHED
-                            </Button>
-                          </div>
-                        )}
+                        <div className="flex gap-4">
+                          <Button
+                            type="button"
+                            bg_color="bg-yellow-500"
+                            shadow_color="shadow-yellow-500/50"
+                          >
+                            EDIT
+                          </Button>
+                          {task.isDone ? (
+                            <>
+                              <DeleteButton
+                                onClick={() => handleDelete(task._id)}
+                              />
+                            </>
+                          ) : (
+                            <>
+                              <DeleteButton
+                                onClick={() => handleDelete(task._id)}
+                              />
+                              <Button
+                                type="button"
+                                bg_color="bg-green-600"
+                                shadow_color="shadow-green-600/50"
+                                onClick={() =>
+                                  handleFinished(task._id, task.todo)
+                                }
+                              >
+                                FINISHED
+                              </Button>
+                            </>
+                          )}
+                        </div>
                       </td>
                     </tr>
                   );
