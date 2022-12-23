@@ -565,6 +565,10 @@ video {
   position: fixed;
 }
 
+.absolute{
+  position: absolute;
+}
+
 .my-10{
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
@@ -572,6 +576,10 @@ video {
 
 .mr-8{
   margin-right: 2rem;
+}
+
+.block{
+  display: block;
 }
 
 .flex{
@@ -594,16 +602,20 @@ video {
   height: 13rem;
 }
 
-.w-\[50\%\]{
-  width: 50%;
+.w-\[60\%\]{
+  width: 60%;
 }
 
 .w-\[100\%\]{
   width: 100%;
 }
 
-.w-\[85\%\]{
-  width: 85%;
+.w-\[70\%\]{
+  width: 70%;
+}
+
+.w-\[80\%\]{
+  width: 80%;
 }
 
 .max-w-\[150px\]{
@@ -612,6 +624,11 @@ video {
 
 .table-fixed{
   table-layout: fixed;
+}
+
+.transform{
+  -webkit-transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+          transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .flex-col{
@@ -624,6 +641,10 @@ video {
 
 .justify-center{
   justify-content: center;
+}
+
+.justify-between{
+  justify-content: space-between;
 }
 
 .gap-8{
@@ -640,10 +661,6 @@ video {
 
 .overflow-y-auto{
   overflow-y: auto;
-}
-
-.overflow-y-scroll{
-  overflow-y: scroll;
 }
 
 .text-ellipsis{
@@ -696,6 +713,10 @@ video {
   background-color: rgb(22 163 74 / var(--tw-bg-opacity));
 }
 
+.p-6{
+  padding: 1.5rem;
+}
+
 .px-6{
   padding-left: 1.5rem;
   padding-right: 1.5rem;
@@ -716,6 +737,16 @@ video {
   padding-right: 2.5rem;
 }
 
+.px-4{
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.py-1{
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
 .text-left{
   text-align: left;
 }
@@ -727,6 +758,16 @@ video {
 .text-2xl{
   font-size: 1.5rem;
   line-height: 2rem;
+}
+
+.text-sm{
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.text-lg{
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
 .font-bold{
@@ -770,6 +811,12 @@ video {
   --tw-shadow: var(--tw-shadow-colored);
 }
 
+.blur{
+  --tw-blur: blur(8px);
+  -webkit-filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+          filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
 * {
   font-family: Roboto;
 }
@@ -797,6 +844,10 @@ td, th {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+.hover\:bg-green-400\/75:hover{
+  background-color: rgb(74 222 128 / 0.75);
 }
 
 .focus\:rounded:focus{
