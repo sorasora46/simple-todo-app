@@ -114,13 +114,6 @@ function App() {
                 SAVE
               </Button>
             </form>
-            <Button
-              type="button"
-              bg_color="bg-yellow-500"
-              shadow_color="shadow-yellow-500/50"
-            >
-              GET TASKS
-            </Button>
           </div>
           {/* https://stackoverflow.com/questions/4185814/fixed-table-cell-width about table-layout: fixed */}
           <div className="table-wrapper w-[100%] h-52 overflow-y-auto">
