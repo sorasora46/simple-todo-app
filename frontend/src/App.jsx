@@ -1,10 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 import axios from "axios";
 import "./style.css";
+import Modal from "./components/Modal";
 
 function App() {
   const [task, setTask] = useState("");
-  const [taskList, setTaskList] = useState();
+  const [taskList, setTaskList] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedTask, setSelectedTask] = useState({});
+  const [selectedTodo, setSelectedTodo] = useState("");
 
   function Button({
     type,
@@ -76,6 +80,19 @@ function App() {
     window.location.reload();
   }
 
+  function handleEditSubmit() {
+    let task = {
+      ...selectedTask,
+      todo: selectedTodo,
+    };
+    axios.put("http://localhost:8000/edit", {
+      id_string: task._id,
+      todo: task.todo,
+      isDone: task.isDone,
+    });
+    window.location.reload();
+  }
+
   function fetchData() {
     axios
       .get("http://localhost:8000/get")
@@ -87,13 +104,13 @@ function App() {
       });
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     fetchData();
   }, []);
 
   return (
     <div className="h-[100vh] flex justify-center items-center bg-gray-200">
-      <div className="w-[60%] h-[50vh] border rounded-xl py-10 px-10 shadow-lg bg-white">
+      <div className="w-[80%] h-[50vh] border rounded-xl py-10 px-10 shadow-lg bg-white">
         <div className="flex flex-col justify-center items-center">
           <h1 className="font-bold text-2xl text-center">To Do App</h1>
           <div className="w-[100%] flex justify-center gap-8 my-10">
@@ -142,6 +159,11 @@ function App() {
                             type="button"
                             bg_color="bg-yellow-500"
                             shadow_color="shadow-yellow-500/50"
+                            onClick={() => {
+                              setSelectedTask(task);
+                              setSelectedTodo(task.todo);
+                              setIsOpen(true);
+                            }}
                           >
                             EDIT
                           </Button>
@@ -175,6 +197,40 @@ function App() {
                 })}
               </tbody>
             </table>
+            <Modal
+              isOpen={isOpen}
+              setIsOpen={setIsOpen}
+              width="20%"
+              height="30vh"
+            >
+              <div className="flex flex-col justify-center items-center w-[100%] gap-4">
+                <h2 className="font-bold text-lg text-center">
+                  Editing Your Task
+                </h2>
+                <form
+                  className="flex flex-col justify-center items-center w-[100%] gap-4"
+                  onSubmit={(e) => {
+                    handleEditSubmit();
+                    e.preventDefault();
+                    setIsOpen(false);
+                  }}
+                >
+                  <input
+                    className="text-center border rounded focus:outline-none focus:ring focus:border-blue-500 focus:rounded px-6 py-2"
+                    type="text"
+                    value={selectedTodo}
+                    onChange={(e) => setSelectedTodo(e.target.value)}
+                  />
+                  <Button
+                    type="submit"
+                    bg_color="bg-green-600"
+                    shadow_color="shadow-green-600/50"
+                  >
+                    SAVE
+                  </Button>
+                </form>
+              </div>
+            </Modal>
           </div>
         </div>
       </div>
