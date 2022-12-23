@@ -91,8 +91,6 @@ function App() {
     fetchData();
   }, []);
 
-  console.log(taskList);
-
   return (
     <div className="h-[100vh] flex justify-center items-center bg-gray-200">
       <div className="w-[60%] h-[50vh] border rounded-xl py-10 px-10 shadow-lg bg-white">
@@ -138,7 +136,7 @@ function App() {
               <tbody>
                 {taskList?.map((task, index) => {
                   return (
-                    <tr key={index} onClick={() => { onOpen() }} className="hover:bg-green-400/75">
+                    <tr key={index} className="hover:bg-green-400/75">
                       <td>{index + 1}</td>
                       {/* https://stackoverflow.com/questions/9789723/css-text-overflow-in-a-table-cell about setting text-overflow in table cell */}
                       <td className="max-w-[150px] overflow-hidden whitespace-nowrap text-ellipsis">
