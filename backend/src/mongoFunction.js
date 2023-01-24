@@ -8,8 +8,8 @@ export const getTodos = async () => {
   try {
     await mongoClient.connect();
     const result = await mongoClient
-      .db("local")
-      .collection("todo_list")
+      .db("simple-todo-app-db")
+      .collection("tasks")
       .find({})
       .toArray();
     await mongoClient.close();
@@ -23,8 +23,8 @@ export const addTodo = async (todo) => {
   try {
     await mongoClient.connect();
     const result = await mongoClient
-      .db("local")
-      .collection("todo_list")
+      .db("simple-todo-app-db")
+      .collection("tasks")
       .insertOne({
         todo: todo,
         isDone: false,
@@ -41,8 +41,8 @@ export const editTodo = async (id_string, todo, isDone) => {
   try {
     await mongoClient.connect();
     const result = await mongoClient
-      .db("local")
-      .collection("todo_list")
+      .db("simple-todo-app-db")
+      .collection("tasks")
       .updateOne(
         {
           _id: new ObjectId(id_string),
@@ -65,8 +65,8 @@ export const deleteTodo = async (id_string) => {
   try {
     await mongoClient.connect();
     const result = await mongoClient
-      .db("local")
-      .collection("todo_list")
+      .db("simple-todo-app-db")
+      .collection("tasks")
       .deleteOne({
         _id: new ObjectId(id_string),
       });
