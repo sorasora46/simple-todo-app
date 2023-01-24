@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/index"
+    "dev": "nodemon src/index",
+    "db": "mongod --port 27017 --dbpath C:/MongoDB/data/simple-todo-app-db"
   },
   "author": "",
   "license": "ISC",
